@@ -11,7 +11,6 @@ import {
 import { useEffect, useState } from "react";
 
 /* ------------------ Variants ------------------ */
-
 const emergenceContainer: Variants = {
   hidden: { opacity: 0 },
   show: {
@@ -42,7 +41,6 @@ const wordVariant: Variants = {
 };
 
 /* ------------------ Component ------------------ */
-
 export default function Hero() {
   const { scrollY } = useScroll();
   const shouldReduceMotion = useReducedMotion();
@@ -57,7 +55,6 @@ export default function Hero() {
 
   const allowMotion = !shouldReduceMotion && !isMobile;
 
-  // Parallax effects for that premium feel
   const yTwist = useTransform(scrollY, [0, 600], [0, allowMotion ? -80 : 0]);
   const bgShift = useTransform(scrollY, [0, 1000], [0, allowMotion ? 120 : 0]);
 
@@ -66,25 +63,25 @@ export default function Hero() {
       
       {/* ------------------ BACKGROUND AMBIENCE ------------------ */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Large Purple Glow */}
+        {/* Enhanced Purple Glow */}
         <motion.div
           animate={allowMotion ? { 
-            scale: [1, 1.1, 1],
-            opacity: [0.1, 0.2, 0.1] 
+            scale: [1, 1.12, 1],
+            opacity: [0.1, 0.25, 0.1] 
           } : {}}
-          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
           style={{ y: bgShift }}
-          className="absolute top-[-20%] left-[-10%] w-[100vw] h-[100vw] bg-purple-600/20 blur-[150px] rounded-full"
+          className="absolute top-[-25%] left-[-15%] w-[120vw] h-[120vw] bg-purple-600/25 blur-[180px] rounded-full"
         />
 
-        {/* Cyber Grid Overlay */}
+        {/* Noise & Grid Overlay */}
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
         <div className="absolute inset-0 bg-[radial-gradient(#581c87_1px,transparent_1px)] [background-size:70px_70px] opacity-[0.15]" />
       </div>
 
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-          
+
           {/* ------------------ TEXT COLUMN ------------------ */}
           <motion.div
             className="lg:col-span-7"
@@ -93,15 +90,17 @@ export default function Hero() {
             whileInView="show"
             viewport={{ once: true }}
           >
+            {/* Tagline */}
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="text-purple-400 font-black tracking-[0.5em] uppercase text-[10px] flex items-center gap-3">
                 <span className="h-[1px] w-8 bg-purple-500/50" />
-                Bespoke Strategy
+                Executive Precision
               </span>
             </motion.div>
 
-            <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[0.95] tracking-tighter mb-8">
-              {"Support that".split(" ").map((word, i) => (
+            {/* Headline */}
+            <motion.h1 className="text-5xl md:text-7xl lg:text-8xl font-extrabold text-white leading-[0.95] tracking-tighter mb-6">
+              {"Strategic Support".split(" ").map((word, i) => (
                 <motion.span key={i} variants={wordVariant} className="inline-block mr-3">
                   {word}
                 </motion.span>
@@ -111,22 +110,25 @@ export default function Hero() {
                 variants={fadeInUp}
                 className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-300 to-purple-200"
               >
-                buys back time.
+                that buys back your time.
               </motion.span>
             </motion.h1>
 
+            {/* Subheading / Microcopy */}
             <motion.p
               variants={fadeInUp}
-              className="text-purple-100/60 text-lg md:text-xl max-w-lg leading-relaxed mb-10 font-light"
+              className="text-purple-100/70 text-lg md:text-xl max-w-lg leading-relaxed mb-10 font-light"
             >
-              I manage the operational complexities so you can focus on the
-              vision. Precision-led executive support for high-stakes leadership.
+              I handle the operational complexities so you can focus on vision and growth. 
+              Trusted by executives to deliver precision-led, confidential, high-impact support.
             </motion.p>
 
+            {/* CTAs */}
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center gap-6">
               <a href="#contact">
-                <button className="relative px-10 py-5 bg-purple-600 text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-[0_0_30px_rgba(147,51,234,0.3)] transition-all duration-500 hover:bg-white hover:text-[#0d0617] active:scale-95">
+                <button className="relative px-10 py-5 bg-purple-600 text-white text-[11px] font-black uppercase tracking-[0.2em] shadow-[0_0_35px_rgba(147,51,234,0.35)] transition-all duration-500 hover:bg-white hover:text-[#0d0617] active:scale-95">
                   Secure Consultation
+                  <span className="block text-[9px] text-purple-200 font-light mt-1">Limited executive slots available</span>
                 </button>
               </a>
 
@@ -156,18 +158,18 @@ export default function Hero() {
                   priority
                   className="object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-1000"
                 />
-                
+
                 {/* Floating Label Overlay */}
                 <div className="absolute bottom-8 right-8 text-right z-30 drop-shadow-lg">
-                   <p className="text-white text-[12px] font-black tracking-widest uppercase mb-1">Fortune Chamberlain</p>
-                   <div className="h-[1px] w-8 bg-purple-500 ml-auto mb-2" />
-                   <p className="text-purple-400 text-[9px] font-black tracking-[0.3em] uppercase">Executive Assistant</p>
+                  <p className="text-white text-[12px] font-black tracking-widest uppercase mb-1">Fortune Chamberlain</p>
+                  <div className="h-[1px] w-8 bg-purple-500 ml-auto mb-2" />
+                  <p className="text-purple-400 text-[9px] font-black tracking-[0.3em] uppercase">Executive Assistant</p>
                 </div>
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0d0617]/80 via-transparent to-transparent" />
               </div>
 
-              {/* FLOATING PRECISION DETAIL (The "Twist") */}
+              {/* FLOATING PRECISION DETAIL */}
               <motion.div
                 style={{ y: yTwist }}
                 className="hidden lg:block absolute -bottom-10 -left-10 w-44 h-44 border-[12px] border-[#0d0617] bg-[#0d0617] shadow-[0_30px_60px_rgba(0,0,0,0.8)] z-40 overflow-hidden rounded-xl"
